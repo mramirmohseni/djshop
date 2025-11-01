@@ -1,6 +1,8 @@
 from .common import *
 from decouple import config
 
+ALLOWED_HOSTS = ['*']
+
 INSTALLED_APPS = [
     "daphne",
     "drf_spectacular"
