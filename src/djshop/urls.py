@@ -16,8 +16,16 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+admin_urls = [
+    path("api/admin/catalog/", include(('djshop.apps.catalog.urls.admin', 'djshop.apps.catalog'), namespace='catalog-admin')),
+]
+
+front_urls = [
+    path("api/front/catalog/", include(('djshop.apps.catalog.urls.front', 'djshop.apps.catalog'), namespace='catalog-front')),
+]
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-]
+] + front_urls + admin_urls
